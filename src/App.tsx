@@ -1,12 +1,9 @@
 import React from 'react'
+import NotificationBoard from './components/NotificationBoard'
 import './App.css'
 
 function App() {
-  return (
-    <div>
-      <header>Hello World</header>
-    </div>
-  )
+  return <NotificationBoard />
 }
 
 export default App
