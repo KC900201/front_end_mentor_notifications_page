@@ -5,7 +5,24 @@ const PanelTH = styled.th`
   background-color: hsl(0, 0%, 100%);
 `
 
-// Continue 11/29/2023 (Further work on data arrangement, add in button click for markall as read, number symbol)
+const NotificationAlert = styled.div`
+  background-color: hsl(219, 85%, 26%);
+  color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  min-width: 2rem;
+  font-weight: 200;
+  padding: 0.05rem;
+`
+
+const MarkReadButton = styled.button`
+  background-color: inherit;
+  font-weight: 500 !important;
+  font-family: inherit;
+  font-size: inherit;
+  border: 0;
+  margin: 0;
+`
+
 function NotificationPanel() {
   return (
     <thead>
@@ -15,19 +32,21 @@ function NotificationPanel() {
             display: 'flex',
             fontWeight: '800',
             justifyContent: 'flex-start',
+            alignItems: 'flex-end',
+            gap: '0.75rem',
           }}
         >
           Notifications
+          <NotificationAlert>3</NotificationAlert>
         </PanelTH>
-        <PanelTH>3</PanelTH>
         <PanelTH
           style={{
-            fontWeight: '500',
-            display: 'flex',
-            justifyContent: 'flex-end',
+            textAlign: 'end',
           }}
         >
-          Mark all as read
+          <MarkReadButton type="button" onClick={() => alert('Hello')}>
+            Mark all as read
+          </MarkReadButton>
         </PanelTH>
       </tr>
     </thead>
