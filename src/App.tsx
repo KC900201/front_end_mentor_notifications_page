@@ -11,7 +11,7 @@ function App() {
     <NotificationBoard>
       <NotificationTable>
         <NotificationPanel />
-        <tbody>
+        <tbody style={{ display: 'block', marginTop: '1rem' }}>
           <NotificationRow isNew />
         </tbody>
       </NotificationTable>

@@ -1,35 +1,64 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import { useImage } from 'react-image'
 
-interface NotificationProps {
-  imageUrl?: string
-  dateTime?: Date
-  userName?: string
-  content?: string
-  privateMessage?: string
-  isNew: boolean
-}
+import { NotificationInterface } from '../interfaces/notification'
+import defaultIcon from '../assets/default_icon.png'
 
 const TableRow = styled.tr`
   display: flex;
-  justify: flex-start;
-  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
   background-color: hsl(0, 0%, 100%);
 
   td {
     background-color: inherit;
   }
 `
-// Continue 11/29/2023 (Need to further modify the data arrangement)
+// continue 12/7/2023
+const GridComponent = styled.section`
+  display: grid;
+`
+const ProfilePhoto = styled.img`
+  display: block;
+  width: 35px;
+  height: 35px;
+`
+
+// WIP
+const MainMessageComponent = styled.div``
+const DateTimeComponent = styled.div``
+const PrivateMessageComponent = styled.div``
+const MediaComponent = styled.div``
+
 function NotificationRow({
-  imageUrl,
+  profilePhotoUrl,
   dateTime,
   userName,
-  content,
-}: NotificationProps) {
+  mainMessage,
+}: NotificationInterface) {
+  const ProfleImageComponent = () => {
+    const { src } = useImage({
+      srcList: profilePhotoUrl ?? defaultIcon,
+    })
+
+    return <ProfilePhoto src={src} />
+  }
+
   return (
     <TableRow>
-      <td>Hello</td>
+      <td>
+        <ProfleImageComponent />
+      </td>
+      {/* WIP */}
+      <td>
+        <GridComponent>
+          <MainMessageComponent>asd</MainMessageComponent>
+          <DateTimeComponent>asds</DateTimeComponent>
+          <PrivateMessageComponent>asds</PrivateMessageComponent>
+        </GridComponent>
+      </td>
     </TableRow>
   )
 }
