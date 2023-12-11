@@ -26,7 +26,13 @@ const MarkReadButton = styled.button`
 function NotificationPanel() {
   return (
     <thead>
-      <tr>
+      <tr
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          marginBottom: '1.5rem',
+        }}
+      >
         <PanelTH
           style={{
             display: 'flex',

@@ -7,3 +7,5 @@ export interface NotificationInterface {
   privateMessage?: string
   isNew: boolean
 }
+
+export type NotificationType =   NotificationInterface
