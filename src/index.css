@@ -1,5 +1,6 @@
 * {
   background-color: hsl(210, 60%, 98%);
+  /* https://stackoverflow.com/questions/9333044/how-to-hide-blinking-cursor-in-input-text  */
   caret-color: transparent;
 }
 
