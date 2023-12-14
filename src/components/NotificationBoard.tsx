@@ -10,7 +10,8 @@ const Board = styled.section`
   border-radius: 4px;
   box-shadow: 10px 5px 5px hsl(211, 68%, 94%);
   padding: 15px;
-  height: 600px;
+  height: fit-content;
+  min-height: 300px;
   width: 500px;
   background-color: hsl(0, 0%, 100%);
   position: fixed;

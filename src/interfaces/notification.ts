@@ -1,10 +1,11 @@
 export interface NotificationInterface {
   dateTime?: Date
-  profilePhotoUrl?: string
-  userName?: string
   mediaUrl?: string
+  highlightedMessage?: string
   mainMessage?: string
+  profilePhotoUrl?: string
   privateMessage?: string
+  userName?: string
   isNew: boolean
 }
 

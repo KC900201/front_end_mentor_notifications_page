@@ -18,7 +18,11 @@ const TableRow = styled.tr`
     background-color: inherit;
   }
 `
-// continue 12/7/2023
+
+const HighLightedText = styled.strong`
+  font-weight: 800;
+`
+
 const ProfilePhoto = styled.img`
   display: block;
   width: 35px;
@@ -27,7 +31,9 @@ const ProfilePhoto = styled.img`
 
 const MainMessageComponent = styled.div`
   font-size: 12px;
+  text-align: justify;
 `
+
 const DateTimeComponent = styled.div`
   font-size: 12px;
 `
@@ -38,6 +44,7 @@ function NotificationRow({
   profilePhotoUrl,
   dateTime,
   userName,
+  highlightedMessage,
   mainMessage,
   privateMessage,
 }: NotificationInterface) {
@@ -54,9 +61,19 @@ function NotificationRow({
       <td>
         <ProfleImageComponent />
       </td>
-      <td style={{ width: 'max-content', display: 'grid' }}>
+      <td
+        style={{
+          display: 'grid',
+          wordBreak: 'break-word',
+          textOverflow: 'ellipsis',
+        }}
+      >
         <MainMessageComponent>
-          {`${userName ?? ''} ${mainMessage ?? ''}`}
+          <HighLightedText>{`${userName ?? ''}`}</HighLightedText>
+          {` ${mainMessage ?? ''} `}
+          <HighLightedText style={{ color: 'hsl(219, 85%, 26%)' }}>{`${
+            highlightedMessage ?? ''
+          }`}</HighLightedText>
         </MainMessageComponent>
         <DateTimeComponent>
           {dateTime ? formatDateTime(dateTime, 'yyyy/MM/dd') : ''}
