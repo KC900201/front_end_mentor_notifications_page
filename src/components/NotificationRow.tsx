@@ -14,7 +14,8 @@ const TableRow = styled.tr`
   background-color: hsl(0, 0%, 100%);
   margin-bottom: 1rem;
 
-  td {
+  td,
+  div {
     background-color: inherit;
   }
 `

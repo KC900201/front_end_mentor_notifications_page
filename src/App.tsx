@@ -46,14 +46,14 @@ function App() {
       profilePhotoUrl: avatarRizky,
       mainMessage: 'sent you a private message',
       privateMessage: '',
-      isNew: true,
+      isNew: false,
     },
     {
       dateTime: new Date('2023-12-02'),
       userName: 'Kimberly Smith',
       profilePhotoUrl: avatarKimberly,
       mainMessage: 'commented on your picture',
-      isNew: true,
+      isNew: false,
     },
     {
       dateTime: new Date('2023-12-02'),
@@ -61,7 +61,7 @@ function App() {
       profilePhotoUrl: avatarNathan,
       mainMessage: 'reacted to your recent post',
       highlightedMessage: '5 end-game strategies to increase your win rate',
-      isNew: true,
+      isNew: false,
     },
     {
       dateTime: new Date('2023-12-02'),
@@ -69,14 +69,16 @@ function App() {
       profilePhotoUrl: avatarAnna,
       mainMessage: 'left the group',
       highlightedMessage: 'Chess Club',
-      isNew: true,
+      isNew: false,
     },
   ]
+
+  const newNotifications = notificationArrays.filter((el) => el.isNew).length
 
   return (
     <NotificationBoard>
       <NotificationTable>
-        <NotificationPanel />
+        <NotificationPanel newNotifications={newNotifications} />
         <tbody>
           {notificationArrays.map((el, idx) => (
             <NotificationRow

@@ -23,7 +23,7 @@ const MarkReadButton = styled.button`
   margin: 0;
 `
 
-function NotificationPanel() {
+function NotificationPanel({ newNotifications }: { newNotifications: number }) {
   return (
     <thead>
       <tr
@@ -43,7 +43,7 @@ function NotificationPanel() {
           }}
         >
           Notifications
-          <NotificationAlert>3</NotificationAlert>
+          <NotificationAlert>{newNotifications}</NotificationAlert>
         </PanelTH>
         <PanelTH
           style={{
