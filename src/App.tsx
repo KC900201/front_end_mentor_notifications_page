@@ -41,15 +41,16 @@ function App() {
       isNew: true,
     },
     {
-      dateTime: new Date('2023-12-02'),
+      dateTime: new Date('2023-12-20'),
       userName: 'Rizky Hasanuddin',
       profilePhotoUrl: avatarRizky,
       mainMessage: 'sent you a private message',
-      privateMessage: '',
+      privateMessage: `Hello, thanks for the setting up the Chess Club. I've been a memberfor a few weeks now and
+                       I'm already having lots of fun and improving my game.`,
       isNew: false,
     },
     {
-      dateTime: new Date('2023-12-02'),
+      dateTime: new Date('2023-12-18'),
       userName: 'Kimberly Smith',
       profilePhotoUrl: avatarKimberly,
       mainMessage: 'commented on your picture',
@@ -79,13 +80,14 @@ function App() {
     <NotificationBoard>
       <NotificationTable>
         <NotificationPanel newNotifications={newNotifications} />
-        <tbody>
+        <tbody style={{ backgroundColor: 'transparent' }}>
           {notificationArrays.map((el, idx) => (
             <NotificationRow
               key={`row-${idx}`}
               dateTime={el.dateTime}
               mainMessage={el.mainMessage}
               highlightedMessage={el.highlightedMessage}
+              privateMessage={el.privateMessage}
               profilePhotoUrl={el.profilePhotoUrl}
               userName={el.userName}
               isNew={el.isNew}

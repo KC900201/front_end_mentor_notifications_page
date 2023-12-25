@@ -25,12 +25,13 @@ const MarkReadButton = styled.button`
 
 function NotificationPanel({ newNotifications }: { newNotifications: number }) {
   return (
-    <thead>
+    <thead style={{ backgroundColor: 'transparent' }}>
       <tr
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           marginBottom: '1.5rem',
+          backgroundColor: 'transparent',
         }}
       >
         <PanelTH
