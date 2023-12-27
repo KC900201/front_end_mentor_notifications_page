@@ -1,5 +1,5 @@
-import React from 'react'
 import './App.css'
+
 import avatarAnna from './assets/avatar-anna-kim.webp'
 import avatarAngela from './assets/avatar-angela-gray.webp'
 import avatarMark from './assets/avatar-mark-webber.webp'
@@ -7,6 +7,7 @@ import avatarJacob from './assets/avatar-jacob-thompson.webp'
 import avatarRizky from './assets/avatar-rizky-hasanuddin.webp'
 import avatarKimberly from './assets/avatar-kimberly-smith.webp'
 import avatarNathan from './assets/avatar-nathan-peterson.webp'
+import chessImage from './assets/image-chess.webp'
 
 import type { NotificationType } from './interfaces/notification'
 
@@ -54,6 +55,7 @@ function App() {
       userName: 'Kimberly Smith',
       profilePhotoUrl: avatarKimberly,
       mainMessage: 'commented on your picture',
+      mediaUrl: chessImage,
       isNew: false,
     },
     {
@@ -74,12 +76,10 @@ function App() {
     },
   ]
 
-  const newNotifications = notificationArrays.filter((el) => el.isNew).length
-
   return (
     <NotificationBoard>
       <NotificationTable>
-        <NotificationPanel newNotifications={newNotifications} />
+        <NotificationPanel notificationArrays={notificationArrays} />
         <tbody style={{ backgroundColor: 'transparent' }}>
           {notificationArrays.map((el, idx) => (
             <NotificationRow
@@ -89,6 +89,7 @@ function App() {
               highlightedMessage={el.highlightedMessage}
               privateMessage={el.privateMessage}
               profilePhotoUrl={el.profilePhotoUrl}
+              mediaUrl={el.mediaUrl}
               userName={el.userName}
               isNew={el.isNew}
             />

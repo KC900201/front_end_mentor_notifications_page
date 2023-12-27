@@ -1,5 +1,6 @@
-import * as React from 'react'
 import styled from 'styled-components'
+
+import type { NotificationType } from '../interfaces/notification'
 
 const PanelTH = styled.th`
   background-color: hsl(0, 0%, 100%);
@@ -23,7 +24,19 @@ const MarkReadButton = styled.button`
   margin: 0;
 `
 
-function NotificationPanel({ newNotifications }: { newNotifications: number }) {
+function NotificationPanel({
+  notificationArrays,
+}: {
+  notificationArrays: NotificationType[]
+}) {
+  const newNotifications = notificationArrays.filter((el) => el.isNew).length
+
+  // Continue fix function (12/27/2023)
+  const markAllNotificationsAsRead = () => {
+    console.log('Hello')
+    notificationArrays.forEach((notification) => (notification.isNew = false))
+  }
+
   return (
     <thead style={{ backgroundColor: 'transparent' }}>
       <tr
@@ -51,7 +64,10 @@ function NotificationPanel({ newNotifications }: { newNotifications: number }) {
             textAlign: 'end',
           }}
         >
-          <MarkReadButton type="button" onClick={() => alert('Hello')}>
+          <MarkReadButton
+            type="button"
+            onClick={() => markAllNotificationsAsRead()}
+          >
             Mark all as read
           </MarkReadButton>
         </PanelTH>
