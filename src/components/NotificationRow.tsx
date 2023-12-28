@@ -75,7 +75,7 @@ function NotificationRow({
       srcList: profilePhotoUrl ?? defaultIcon,
     })
 
-    return <ProfilePhoto src={src} />
+    return <ProfilePhoto alt="profile photo" src={src} />
   }
 
   const MediaComponent = () => {
@@ -83,7 +83,7 @@ function NotificationRow({
       srcList: mediaUrl ?? defaultIcon,
     })
 
-    return <MediaPhoto src={src} />
+    return <MediaPhoto alt="media image" src={src} />
   }
 
   const NewNotificationDot = () => (
