@@ -1,4 +1,3 @@
-import * as React from 'react'
 import styled from 'styled-components'
 import { GoDotFill } from 'react-icons/go'
 import { useImage } from 'react-image'
@@ -7,13 +6,15 @@ import { formatDistanceToNowStrict } from 'date-fns'
 import { NotificationInterface } from '../interfaces/notification'
 import defaultIcon from '../assets/default_icon.png'
 
-const TableRow = styled.tr`
+const TableRow = styled.tr<{ isNew: boolean }>`
   display: flex;
   justify-content: flex-start;
   gap: 0.75rem;
   align-items: flex-start;
-  background-color: hsl(0, 0%, 100%);
+  background-color: ${(props) =>
+    props.isNew ? `hsl(211, 68%, 94%)` : `hsl(0, 0%, 100%)`};
   margin-bottom: 1rem;
+  border-radius: 4px;
 
   td,
   div {
@@ -25,12 +26,15 @@ const HighLightedText = styled.strong`
   font-weight: 800;
   color: hsl(0, 0%, 0%);
   width: max-content;
+  background-color: inherit;
 `
 
 const ProfilePhoto = styled.img`
   display: block;
+  border-radius: 4px;
   width: 35px;
   height: 35px;
+  background-color: inherit;
 `
 
 const MainMessageComponent = styled.div`
@@ -50,7 +54,11 @@ const PrivateMessageComponent = styled.div`
   border-radius: 4px;
   padding: 0.6rem;
 `
-// const MediaComponent = styled.div``
+const MediaPhoto = styled.img`
+  border-radius: 4px;
+  width: 35px;
+  height: 35px;
+`
 
 function NotificationRow({
   profilePhotoUrl,
@@ -60,52 +68,74 @@ function NotificationRow({
   highlightedMessage,
   mainMessage,
   privateMessage,
+  mediaUrl,
 }: NotificationInterface) {
   const ProfleImageComponent = () => {
     const { src } = useImage({
       srcList: profilePhotoUrl ?? defaultIcon,
     })
 
-    return <ProfilePhoto src={src} />
+    return <ProfilePhoto alt="profile photo" src={src} />
+  }
+
+  const MediaComponent = () => {
+    const { src } = useImage({
+      srcList: mediaUrl ?? defaultIcon,
+    })
+
+    return <MediaPhoto alt="media image" src={src} />
   }
 
   const NewNotificationDot = () => (
-    <GoDotFill style={{ color: 'hsl(1, 90%, 64%)' }} />
+    <GoDotFill
+      style={{ backgroundColor: 'inherit', color: 'hsl(1, 90%, 64%)' }}
+    />
   )
 
   return (
-    <TableRow>
+    <TableRow isNew={isNew}>
       <td>
         <ProfleImageComponent />
       </td>
       <td
         style={{
-          display: 'grid',
-          gap: '5px',
-          wordBreak: 'break-word',
-          textOverflow: 'ellipsis',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '9.9rem',
         }}
       >
-        <MainMessageComponent>
-          <HighLightedText>{`${userName ?? ''}`}</HighLightedText>
-          {` ${mainMessage ?? ''} `}
-          <HighLightedText style={{ color: 'hsl(219, 85%, 26%)' }}>{`${
-            highlightedMessage ?? ''
-          }`}</HighLightedText>
-          {isNew ? <NewNotificationDot /> : ''}
-        </MainMessageComponent>
-        <DateTimeComponent>
-          {dateTime
-            ? formatDistanceToNowStrict(dateTime, {
-                addSuffix: true,
-              })
-            : ''}
-        </DateTimeComponent>
-        {privateMessage ? (
-          <PrivateMessageComponent>{privateMessage}</PrivateMessageComponent>
-        ) : (
-          ''
-        )}
+        <section
+          style={{
+            display: 'grid',
+            backgroundColor: 'inherit',
+            gap: '5px',
+            wordBreak: 'break-word',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          <MainMessageComponent>
+            <HighLightedText>{`${userName ?? ''}`}</HighLightedText>
+            {` ${mainMessage ?? ''} `}
+            <HighLightedText style={{ color: 'hsl(219, 85%, 26%)' }}>{`${
+              highlightedMessage ?? ''
+            }`}</HighLightedText>
+            {isNew ? <NewNotificationDot /> : ''}
+          </MainMessageComponent>
+          <DateTimeComponent>
+            {dateTime
+              ? formatDistanceToNowStrict(dateTime, {
+                  addSuffix: true,
+                })
+              : ''}
+          </DateTimeComponent>
+          {privateMessage ? (
+            <PrivateMessageComponent>{privateMessage}</PrivateMessageComponent>
+          ) : (
+            ''
+          )}
+        </section>
+        {mediaUrl ? <MediaComponent /> : ''}
       </td>
     </TableRow>
   )
