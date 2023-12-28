@@ -3,7 +3,7 @@ import { GoDotFill } from 'react-icons/go'
 import { useImage } from 'react-image'
 import { formatDistanceToNowStrict } from 'date-fns'
 
-import { NotificationInterface } from '../interfaces/notification'
+import { NotificationInterface } from '../helpers/notification'
 import defaultIcon from '../assets/default_icon.png'
 
 const TableRow = styled.tr<{ $isNew: boolean }>`
