@@ -6,13 +6,13 @@ import { formatDistanceToNowStrict } from 'date-fns'
 import { NotificationInterface } from '../interfaces/notification'
 import defaultIcon from '../assets/default_icon.png'
 
-const TableRow = styled.tr<{ isNew: boolean }>`
+const TableRow = styled.tr<{ $isNew: boolean }>`
   display: flex;
   justify-content: flex-start;
   gap: 0.75rem;
   align-items: flex-start;
   background-color: ${(props) =>
-    props.isNew ? `hsl(211, 68%, 94%)` : `hsl(0, 0%, 100%)`};
+    props.$isNew ? `hsl(211, 68%, 94%)` : `hsl(0, 0%, 100%)`};
   margin-bottom: 1rem;
   border-radius: 4px;
 
@@ -93,7 +93,7 @@ function NotificationRow({
   )
 
   return (
-    <TableRow isNew={isNew}>
+    <TableRow $isNew={isNew}>
       <td>
         <ProfleImageComponent />
       </td>
